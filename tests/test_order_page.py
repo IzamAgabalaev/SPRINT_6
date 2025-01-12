@@ -1,6 +1,6 @@
 import allure
 from conftest import driver
-from page_objects.order_page import OrderPage
+from pages.order_page import OrderPage
 from locators.main_page_locators import MainPageLocators
 from data import *
 import pytest

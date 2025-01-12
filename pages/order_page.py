@@ -1,6 +1,6 @@
 import allure
 from locators.order_page_locators import OrderPageLocators
-from page_objects.base_page import BasePage
+from pages.base_page import BasePage
 from data import TestData
 
 

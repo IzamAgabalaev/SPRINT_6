@@ -2,7 +2,7 @@ import allure
 from selenium.webdriver.support.wait import WebDriverWait
 
 from locators.main_page_locators import MainPageLocators
-from page_objects.base_page import BasePage
+from pages.base_page import BasePage
 from selenium.webdriver.support import expected_conditions as EC
 
 
@@ -36,17 +36,17 @@ class MainPage(BasePage):
     def wait_visibility_of_main_header(self):
         self.wait_visibility_of_element(MainPageLocators.main_header)
 
-    @allure.step('Получить текущий URL')
-    def current_url(self):
-        return self.driver.current_url
-
-    @allure.step('Подождать загрузки URL')
-    def wait_url_until_not_about_blank(self, time=10):
-        return WebDriverWait(self.driver, time).until_not(EC.url_to_be('about:blank'))
-
     @allure.step('Проверить отображение заголовка главной страницы')
     def check_displaying_of_main_header(self):
         return self.check_displaying_of_element(MainPageLocators.main_header)
+
+    @allure.step('Получить текущий URL')
+    def current_url(self):
+        return self.get_current_url()
+
+    @allure.step('Подождать загрузки URL')
+    def wait_url_until_not_about_blank(self, time=10):
+        self.wait_url_until_blank(time)
 
     @allure.step('Проскроллить до секции "Вопросы о важном"')
     def scroll_to_faq_section(self):
